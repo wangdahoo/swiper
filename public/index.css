@@ -1,0 +1,139 @@
+/* latin */
+@font-face {
+  font-family: 'Fugaz One';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Fugaz One'), local('FugazOne-Regular'), url(./fonts/rax_HiWKp9EAITukFsl8AxhfsUjQ8Q.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+* {
+  font-family: 'Fugaz One', cursive;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body.has-header {
+  padding-top: 44px;
+}
+
+html {
+  text-align: center;
+  -webkit-tap-highlight-color: transparent;
+}
+
+h1, .h1 {
+  font-size: 40px;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+li {
+  height: 45px;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  margin-top: -1px;
+}
+
+li > a {
+  display: block;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  padding: 10px 15px;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: left;
+  box-sizing: border-box;
+}
+
+.chevron {
+  float: right;
+  margin-top: 6px;
+  font-size: 12px;
+  line-height: 12px;
+  width: 12px;
+  height: 12px;
+  border-color: #eee;
+  border-width: 0 2px 2px 0;
+  border-style: solid;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+.chevron-back {
+  float: left;
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+}
+
+a {
+  text-decoration: none;
+}
+
+a:link, a:visited, a:hover, a:active {
+  color: coral;
+}
+
+header {
+  display: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 45px;
+  box-sizing: 0 4px 10px rgba(0, 0, 0, 0.4);
+  padding: 10px 15px;
+  font-size: 20px;
+  line-height: 24px;
+  box-sizing: border-box;
+}
+
+.swiper {
+  width: 100%;
+  height: 300px;
+}
+
+.swiper-item {
+  font-size: 100px;
+  background: #eee;
+  text-align: center;
+  line-height: 300px;
+  color: coral;
+}
+
+.buttons {
+  margin-top: 15px;
+}
+
+.buttons > button, .buttons > select {
+  float: left;
+  height: 44px;
+  background: coral;
+  border-radius: 22px;
+  border-style: initial;
+  outline: none;
+  color: white;
+  font-size: 18px;
+  padding: 8px 16px;
+  min-width: 80px;
+  margin: 0 8px;
+}
+
+.buttons > button:active {
+  opacity: 0.8;
+}
+
+.buttons > select {
+  text-align: center;
+  text-align-last: center;
+  margin: 0 8px;
+  padding: 0 0 0 16px;
+}

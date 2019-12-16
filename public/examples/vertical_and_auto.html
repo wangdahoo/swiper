@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Swiper - General</title>
+
+  <link rel="stylesheet" href="../swiper.css">
+  <link rel="stylesheet" href="../index.css">
+</head>
+<body>
+  <header>
+    <a class="chevron chevron-back" href="/"></a>
+    Vertical and Auto
+  </header>
+  <div class="swiper">
+    <div class="swiper-item">
+      0
+    </div>
+    <div class="swiper-item">
+      1
+    </div>
+    <div class="swiper-item">
+      2
+    </div>
+    <div class="swiper-item">
+      3
+    </div>
+    <div class="swiper-item">
+      4
+    </div>
+  </div>
+
+  <script src='../swiper.js'></script>
+  <script>
+    window.swiper = new Swiper(document.querySelector('.swiper'), {
+      auto: 2000,
+      itemClass: '.swiper-item',
+      direction: 'vertical',
+      transitionEnd: function (prev, current, length) {
+        console.log(prev, current, length)
+      }
+    })
+  </script>
+</body>
+</html>

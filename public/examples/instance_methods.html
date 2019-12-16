@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Swiper - General</title>
+
+  <link rel="stylesheet" href="../swiper.css">
+  <link rel="stylesheet" href="../index.css">
+</head>
+<body>
+    <header>
+      <a class="chevron chevron-back" href="/"></a>
+      Instance methods
+    </header>
+
+  <div class="swiper">
+    <div class="swiper-item">
+      0
+    </div>
+    <div class="swiper-item">
+      1
+    </div>
+    <div class="swiper-item">
+      2
+    </div>
+    <div class="swiper-item">
+      3
+    </div>
+    <div class="swiper-item">
+      4
+    </div>
+  </div>
+
+  <div class="buttons">
+    <button id="prev" onclick="window.swiper && window.swiper.prev()"> prev </button>
+    <button id="next" onclick="window.swiper && window.swiper.next()"> next </button>
+    <select id="select-index" onchange="window.swiper && window.swiper.go(this.value)">
+      <option value="0">move to 0</option>
+      <option value="1">move to 1</option>
+      <option value="2">move to 2</option>
+      <option value="3">move to 3</option>
+      <option value="4">move to 4</option>
+    </select>
+  </div>
+
+  <script src='../swiper.js'></script>
+  <script>
+    var swiper = window.swiper = new Swiper(document.querySelector('.swiper'), {
+      auto: false,
+      itemClass: '.swiper-item',
+      disableTouch: false,
+      direction: 'horizontal',
+      transitionEnd: function (prev, current, length) {
+        console.log(prev, current, length)
+      }
+    })
+  </script>
+</body>
+</html>
