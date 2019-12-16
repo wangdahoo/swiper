@@ -78,7 +78,7 @@ a {
 }
 
 a:link, a:visited, a:hover, a:active {
-  color: coral;
+  color: #fa541c;
 }
 
 header {
@@ -100,10 +100,41 @@ header {
 
 .swiper-item {
   font-size: 100px;
-  background: #eee;
   text-align: center;
   line-height: 300px;
-  color: coral;
+  color: #fff;
+}
+
+.swiper-item:nth-of-type(1) {
+  background: #fa541c;
+}
+
+.swiper-item:nth-of-type(2) {
+  background: #1890ff;
+}
+
+.swiper-item:nth-of-type(3) {
+  background: #52c41a;
+}
+
+.swiper-item:nth-of-type(4) {
+  background: #faad14;
+}
+
+.swiper-item:nth-of-type(5) {
+  background: #722ed1;
+}
+
+.swiper-item:nth-of-type(6) {
+  background: #eb2f96;
+}
+
+.swiper-item:nth-of-type(7) {
+  background: #fadb14;
+}
+
+.swiper-item:nth-of-type(8) {
+  background: #a0d911;
 }
 
 .buttons {

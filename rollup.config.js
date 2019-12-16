@@ -9,7 +9,7 @@ const pkg = require('./package.json')
 const _ = require('lodash')
 const moment = require('moment')
 
-const dir = path.resolve(__dirname, process.env.NODE_ENV === 'production' ? 'dist' : 'public')
+const dir = path.resolve(__dirname, process.env.NODE_ENV === 'production' ? 'dist' : 'docs')
 
 const banner = () => {
   const content = () => _.template(`/**

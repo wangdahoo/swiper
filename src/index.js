@@ -291,12 +291,14 @@ function Swiper (container, swiperOptions = {}) {
       if (current === this.current) return
       this.current = current
       const _count = cloneItems ? 2 : count
+      const _current = current > 0 ? current : current + count
+      const _prev = prev > 0 ? prev : prev + count
 
-      options.transitionEnd && options.transitionEnd.call(e, prev % _count, current % _count, _count)
+      options.transitionEnd && options.transitionEnd.call(e, _prev % _count, _current % _count, _count)
       e.preventDefault()
 
       // 这里需要检查当前 swiper-item 中是否有 video 标签
-      if (delay > 0 && timer === null && items[current % _count] && !items[current % _count].querySelector('video')) { begin() }
+      if (delay > 0 && timer === null && items[_current % _count] && !items[_current % _count].querySelector('video')) { begin() }
     }
   }
 
@@ -349,7 +351,8 @@ function Swiper (container, swiperOptions = {}) {
     go,
 
     activeIndex: function () {
-      return current % (cloneItems ? 2 : count)
+      const _current = current > 0 ? current : current + count
+      return _current % (cloneItems ? 2 : count)
     },
 
     begin,

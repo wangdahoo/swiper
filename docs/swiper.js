@@ -95,7 +95,6 @@
 
     function setTranformed() {
       var backward = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
-      // console.log(JSON.stringify(transformed))
       noTransition = [];
 
       for (var k in transformed) {
@@ -160,8 +159,7 @@
           setTranformed(true);
           distance = calDistance(distance, _cloned, transformed, true);
         }
-      } // console.log(Object.keys(distance).map(k => distance[k]))
-
+      }
 
       var re = /^translate3d\((((-?\d+)px, (0|0px), (0|0px))|((0|0px), (-?\d+)px, (0|0px)))\)$/;
 
@@ -169,11 +167,9 @@
         if (distance[k] !== 0) {
           var style = items[~~k] && items[~~k].style;
           var result = re.exec(style.transform || style.webkitTransform);
-          console.log(result);
 
           if (result && result[3]) {
             var oldVal = ~~(result && result[3]);
-            console.log(oldVal, "translate3d(".concat(oldVal + distance[k], "px, 0, 0)"));
             style.transition = style.webkitTransition = 'none';
             style.transform = style.webkitTransform = "translate3d(".concat(oldVal + distance[k], "px, 0, 0)");
           }
@@ -181,6 +177,7 @@
           if (result && result[7]) {
             var _oldVal = ~~(result && result[7]);
 
+            style.transition = style.webkitTransition = 'none';
             style.transform = style.webkitTransform = "translate3d(0, ".concat(_oldVal + distance[k], "px, 0)");
           }
         }
@@ -290,10 +287,14 @@
 
         var _count = cloneItems ? 2 : count;
 
-        options.transitionEnd && options.transitionEnd.call(e, prev % _count, current % _count, _count);
+        var _current = current > 0 ? current : current + count;
+
+        var _prev = prev > 0 ? prev : prev + count;
+
+        options.transitionEnd && options.transitionEnd.call(e, _prev % _count, _current % _count, _count);
         e.preventDefault(); // 这里需要检查当前 swiper-item 中是否有 video 标签
 
-        if (delay > 0 && timer === null && items[current % _count] && !items[current % _count].querySelector('video')) {
+        if (delay > 0 && timer === null && items[_current % _count] && !items[_current % _count].querySelector('video')) {
           begin();
         }
       }
@@ -340,7 +341,9 @@
       prev: prevSlide,
       go: go,
       activeIndex: function activeIndex() {
-        return current % (cloneItems ? 2 : count);
+        var _current = current > 0 ? current : current + count;
+
+        return _current % (cloneItems ? 2 : count);
       },
       begin: begin,
       stop: stop
