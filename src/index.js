@@ -119,15 +119,63 @@ function Swiper (container, swiperOptions = {}) {
     const activeIndex = current % count
     if (index < 0 || index > count - 1 || activeIndex === index) return
 
+    let distance = Object.keys(transformed).reduce((obj, k) => {
+      obj[k] = 0
+      return obj
+    }, {})
+
+    const calDistance = (distance, oldTransformed, newTransformed, backward) => {
+      return Object.keys(distance).reduce((newDistance, k) => {
+        const val = newTransformed[k] - oldTransformed[k]
+
+        if (backward && val < 0) {
+          newDistance[k] += val
+        }
+
+        if (!backward && val > 0) {
+          newDistance[k] += val
+        }
+
+        return newDistance
+      }, distance)
+    }
+
     if (index > activeIndex) {
       while (current % count < index) {
         current++
+        const cloned = extend({}, transformed)
         setTranformed()
+        distance = calDistance(distance, cloned, transformed, false)
       }
     } else {
       while (current % count > index) {
         current--
+        const cloned = extend({}, transformed)
         setTranformed(true)
+        distance = calDistance(distance, cloned, transformed, true)
+      }
+    }
+
+    // console.log(Object.keys(distance).map(k => distance[k]))
+    const re = /^translate3d\((((-?\d+)px, (0|0px), (0|0px))|((0|0px), (-?\d+)px, (0|0px)))\)$/
+
+    for (let k in distance) {
+      if (distance[k] !== 0) {
+        const style = items[~~k] && items[~~k].style
+        const result = re.exec(style.transform || style.webkitTransform)
+        console.log(result)
+
+        if (result && result[3]) {
+          const oldVal = ~~(result && result[3])
+          console.log(oldVal, `translate3d(${oldVal + distance[k]}px, 0, 0)`)
+          style.transition = style.webkitTransition = 'none'
+          style.transform = style.webkitTransform = `translate3d(${oldVal + distance[k]}px, 0, 0)`
+        }
+
+        if (result && result[7]) {
+          const oldVal = ~~(result && result[7])
+          style.transform = style.webkitTransform = `translate3d(0, ${oldVal + distance[k]}px, 0)`
+        }
       }
     }
   }
@@ -191,7 +239,7 @@ function Swiper (container, swiperOptions = {}) {
     stop()
     prev = current
     setCurrent(index)
-    activate()
+    execFn(activate)
   }
 
   function begin () {

@@ -60,7 +60,7 @@ li > a {
   line-height: 12px;
   width: 12px;
   height: 12px;
-  border-color: #eee;
+  border-color: #ddd;
   border-width: 0 2px 2px 0;
   border-style: solid;
   transform: rotate(-45deg);
@@ -146,7 +146,7 @@ header {
   right: 0;
   top: 0;
   left: 0;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #ddd;
   transform: scaleY(0.5);
 }
 
@@ -154,6 +154,6 @@ header {
   right: 0;
   bottom: 0;
   left: 0;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #ddd;
   transform: scaleY(0.5);
 }
