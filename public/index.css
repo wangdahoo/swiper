@@ -37,9 +37,7 @@ ul {
 
 li {
   height: 45px;
-  border-top: 1px solid #eee;
-  border-bottom: 1px solid #eee;
-  margin-top: -1px;
+  position: relative;
 }
 
 li > a {
@@ -84,12 +82,11 @@ a:link, a:visited, a:hover, a:active {
 }
 
 header {
-  display: fixed;
+  position: fixed;
   left: 0;
   top: 0;
   width: 100%;
-  height: 45px;
-  box-sizing: 0 4px 10px rgba(0, 0, 0, 0.4);
+  height: 44px;
   padding: 10px 15px;
   font-size: 20px;
   line-height: 24px;
@@ -136,4 +133,27 @@ header {
   text-align-last: center;
   margin: 0 8px;
   padding: 0 0 0 16px;
+}
+
+.hairline {
+  position: absolute;
+  box-sizing: border-box;
+  content: ' ';
+  pointer-events: none;
+}
+
+.hairline-top {
+  right: 0;
+  top: 0;
+  left: 0;
+  border-bottom: 1px solid #eee;
+  transform: scaleY(0.5);
+}
+
+.hairline-bottom {
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-bottom: 1px solid #eee;
+  transform: scaleY(0.5);
 }

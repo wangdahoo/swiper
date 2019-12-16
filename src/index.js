@@ -11,8 +11,7 @@ const defaultOptions = () => {
     duration: 250,
     transitionEnd: noop,
     auto: 5000,
-    disableTouch: false,
-    loop: true
+    disableTouch: false
   }
 }
 
@@ -41,9 +40,12 @@ function Swiper (container, swiperOptions = {}) {
   let count = items.length
   let cloneItems = false
   if (count === 2) {
-    container.append(...items.map(i => i.cloneNode(true)))
+    for (let i = 0; i < items.length; i++) {
+      container.append(items[i].cloneNode(true))
+    }
+
     items = Array.prototype.slice.call(container.querySelectorAll(options.itemClass))
-    count = 4
+    count = items.length
     cloneItems = true
   }
 
@@ -185,6 +187,7 @@ function Swiper (container, swiperOptions = {}) {
   }
 
   function go (index) {
+    if (index < 0 || index > count - 1) return
     stop()
     prev = current
     setCurrent(index)

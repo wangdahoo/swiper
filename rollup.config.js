@@ -5,8 +5,29 @@ const babel = require('rollup-plugin-babel')
 const postcss = require('rollup-plugin-postcss')
 const autoprefixer = require('autoprefixer')
 const { terser } = require('rollup-plugin-terser')
+const pkg = require('./package.json')
+const _ = require('lodash')
+const moment = require('moment')
 
 const dir = path.resolve(__dirname, process.env.NODE_ENV === 'production' ? 'dist' : 'public')
+
+const banner = () => {
+  const content = () => _.template(`/**
+ * <%= name %>
+ * version: v<%= version %>
+ * build: <%= timestamp %>
+ * author: <%= author %>
+ * homepage: <%= homepage %>
+ */
+`)({...pkg, timestamp: moment().format('YYYY-MM-DD HH:mm:ss')})
+
+  return {
+    name: 'banner',
+    renderChunk: function (code) {
+      return content() + code
+    }
+  }
+}
 
 module.exports = {
   input: path.resolve(__dirname, 'src/index.js'),
@@ -33,6 +54,9 @@ module.exports = {
         autoprefixer
       ]
     }),
-    process.env.NODE_ENV === 'production' && terser()
+    ...(process.env.NODE_ENV === 'production' ? [
+      terser(),
+      banner()
+    ] : [])
   ]
 }
