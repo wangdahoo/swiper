@@ -14,10 +14,8 @@ const dir = path.resolve(__dirname, process.env.NODE_ENV === 'production' ? 'dis
 const banner = () => {
   const content = () => _.template(`/**
  * <%= name %>
- * version: v<%= version %>
- * build: <%= timestamp %>
- * author: <%= author %>
- * homepage: <%= homepage %>
+ * @version: v<%= version %> @timestamp: <%= timestamp %>
+ * @author: <%= author %>
  */
 `)({...pkg, timestamp: moment().format('YYYY-MM-DD HH:mm:ss')})
 
@@ -35,7 +33,7 @@ module.exports = {
     name: 'Swiper',
     dir,
     format: 'umd',
-    entryFileNames: 'swiper.js'
+    entryFileNames: process.env.NODE_ENV === 'production' ? 'swiper.min.js' : 'swiper.js'
   },
   plugins: [
     resolve({

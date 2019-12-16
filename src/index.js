@@ -32,6 +32,10 @@ function execFn (fn) {
 }
 
 function Swiper (container, swiperOptions = {}) {
+  if (!(this instanceof Swiper)) {
+    return new Swiper(container, swiperOptions)
+  }
+
   container = typeof container === 'string' ? document.querySelector(container) : container
   if (!(container instanceof HTMLElement)) return
   const options = extend(defaultOptions(), swiperOptions)
@@ -159,7 +163,7 @@ function Swiper (container, swiperOptions = {}) {
     // console.log(Object.keys(distance).map(k => distance[k]))
     const re = /^translate3d\((((-?\d+)px, (0|0px), (0|0px))|((0|0px), (-?\d+)px, (0|0px)))\)$/
 
-    for (let k in distance) {
+    for (const k in distance) {
       if (distance[k] !== 0) {
         const style = items[~~k] && items[~~k].style
         const result = re.exec(style.transform || style.webkitTransform)
@@ -295,7 +299,7 @@ function Swiper (container, swiperOptions = {}) {
       e.preventDefault()
 
       // 这里需要检查当前 swiper-item 中是否有 video 标签
-      if (delay > 0 && timer === null && items[current % _count] && !items[current % _count].querySelector('video')) begin()
+      if (delay > 0 && timer === null && items[current % _count] && !items[current % _count].querySelector('video')) { begin() }
     }
   }
 
