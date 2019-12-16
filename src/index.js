@@ -94,7 +94,6 @@ function Swiper (container, swiperOptions = {}) {
 
   // Update items' tranformed map
   function setTranformed (backward = false) {
-    // console.log(JSON.stringify(transformed))
     noTransition = []
 
     for (const k in transformed) {
@@ -160,24 +159,22 @@ function Swiper (container, swiperOptions = {}) {
       }
     }
 
-    // console.log(Object.keys(distance).map(k => distance[k]))
     const re = /^translate3d\((((-?\d+)px, (0|0px), (0|0px))|((0|0px), (-?\d+)px, (0|0px)))\)$/
 
     for (const k in distance) {
       if (distance[k] !== 0) {
         const style = items[~~k] && items[~~k].style
         const result = re.exec(style.transform || style.webkitTransform)
-        console.log(result)
 
         if (result && result[3]) {
           const oldVal = ~~(result && result[3])
-          console.log(oldVal, `translate3d(${oldVal + distance[k]}px, 0, 0)`)
           style.transition = style.webkitTransition = 'none'
           style.transform = style.webkitTransform = `translate3d(${oldVal + distance[k]}px, 0, 0)`
         }
 
         if (result && result[7]) {
           const oldVal = ~~(result && result[7])
+          style.transition = style.webkitTransition = 'none'
           style.transform = style.webkitTransform = `translate3d(0, ${oldVal + distance[k]}px, 0)`
         }
       }
