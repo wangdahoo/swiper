@@ -1,6 +1,6 @@
 # Swiper
 
-> Swiper in minimal.
+> swiper for mobile in minimal.
 
 ## Usage
 
@@ -23,8 +23,8 @@
   </div>
 </div>
 
-<script src='//unpkg.qutoutiao.net/@wangdahoo/swiper/swiper.min.css'></script>
-<script src='//unpkg.qutoutiao.net/@wangdahoo/swiper/swiper.min.js'></script>
+<script src='//unpkg.com/@wangdahoo/swiper/swiper.min.css'></script>
+<script src='//unpkg.com/@wangdahoo/swiper/swiper.min.js'></script>
 
 <script>
   window.swiper = new Swiper(document.querySelector('.swiper'), {
