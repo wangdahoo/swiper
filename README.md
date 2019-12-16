@@ -1,6 +1,6 @@
 # Swiper
 
-> yet another swiper :)
+> Swiper in minimal.
 
 ## Usage
 
@@ -38,3 +38,7 @@
   })
 </script>
 ```
+
+## More
+
+- [Examples](https://wangdahoo.github.io/swiper)

@@ -36,7 +36,7 @@
     "build": "NODE_ENV=production rollup -c",
     "watch": "rollup -c -w",
     "dev": "npm-run-all --parallel start watch",
-    "start": "serve public",
+    "start": "serve docs",
     "lint": "prettier-eslint $(pwd)/src/**/*.js --write && eslint --fix ./src"
   }
 }
