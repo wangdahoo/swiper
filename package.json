@@ -1,6 +1,6 @@
 {
   "name": "@wangdahoo/swiper",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "main": "dist/swiper.min.js",
   "license": "MIT",
   "author": "王大虎 <157195705@qq.com>",
