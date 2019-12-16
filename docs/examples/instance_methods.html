@@ -45,6 +45,10 @@
   <div class="buttons">
     <button id="prev" onclick="window.swiper && window.swiper.prev()"> prev </button>
     <button id="next" onclick="window.swiper && window.swiper.next()"> next </button>
+    <button id="reset" onclick="window.swiper && window.swiper.resize()"> reset </button>
+  </div>
+
+  <div class="buttons">
     <select id="select-index" onchange="window.swiper && window.swiper.go(this.value)">
       <option value="0">move to 0</option>
       <option value="1">move to 1</option>

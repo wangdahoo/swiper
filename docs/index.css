@@ -78,7 +78,7 @@ a {
 }
 
 a:link, a:visited, a:hover, a:active {
-  color: #fa541c;
+  color: #52c41a;
 }
 
 header {
@@ -138,13 +138,14 @@ header {
 }
 
 .buttons {
-  margin-top: 15px;
+  box-sizing: border-box;
+  padding: 16px 0 0 0;
+  height: 60px;
 }
 
 .buttons > button, .buttons > select {
-  float: left;
   height: 44px;
-  background: coral;
+  background: #52c41a;
   border-radius: 22px;
   border-style: initial;
   outline: none;
