@@ -273,6 +273,8 @@ function Swiper (container, swiperOptions = {}) {
       }
 
       if (Math.abs(dist) > options.threshold) {
+        stop()
+
         if (dist < 0) {
           prev = current
           current++

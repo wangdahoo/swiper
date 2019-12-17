@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Swiper - Vertical and Auto</title>
+  <title>Swiper - Autoplay</title>
 
   <link rel="stylesheet" href="../swiper.css">
   <link rel="stylesheet" href="../index.css">
@@ -12,7 +12,7 @@
 <body class="has-header">
   <header>
     <a class="chevron chevron-back" href="../"></a>
-    Vertical and Auto
+    Autoplay
   </header>
 
   <div class="swiper">
@@ -38,7 +38,7 @@
     window.swiper = new Swiper(document.querySelector('.swiper'), {
       auto: 2000,
       itemClass: '.swiper-item',
-      direction: 'vertical',
+      direction: 'horizontal',
       transitionEnd: function (prev, current, length) {
         console.log(prev, current, length)
       }
